@@ -165,7 +165,7 @@ public class Player extends Object{
 		HashMap<String, Float> map = new HashMap<String, Float>();
 		
 		for(i=0;i<41;i++){
-			float freq = (float)this.landedOn[i]/10000;
+			float freq = (float)this.landedOn[i]/Game.NUMBER_OF_TURNS;
 			sum = sum + this.landedOn[i];			
 			map.put(Game.positions[i], freq);
 			totProb+=freq;
@@ -190,8 +190,10 @@ public class Player extends Object{
 		System.out.println("HashMap after sorting entries by values "); 
 		Set<Entry<String, Float>> entrySetSortedByValue = sortedByValue.entrySet(); 
 		
-		for(Entry<String, Float> mapping : entrySetSortedByValue){ 
-			System.out.println(mapping.getKey() + " ==> " + mapping.getValue()); 
+		int count = 1;
+		for(Entry<String, Float> mapping : entrySetSortedByValue){
+			System.out.println(count + ": " + mapping.getKey() + " ==> " + mapping.getValue());
+			count++;
 		}
 
 		System.out.println("---------------------------------");

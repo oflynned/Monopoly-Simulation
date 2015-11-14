@@ -8,6 +8,8 @@ import java.util.AbstractCollection;
 
 public class Game extends Object{
 	
+	public static final int NUMBER_OF_TURNS = 100000;
+	
 	int numberOfTurns, doublesInARow, turnsInJail;
 	int landedOn[] = new int[40];
 	Player pawn;
@@ -156,7 +158,7 @@ public class Game extends Object{
 			return;
 		} 
 		//use get out of jail card
-		else if(pawn.hasJailCard == true && pawn.numberOfTurns < 5000){
+		else if(pawn.hasJailCard == true && pawn.numberOfTurns < NUMBER_OF_TURNS/2){
 			pawn.currentPosition=10;
 			pawn.hasJailCard=false;
 			pawn.isInJail=false;
@@ -185,7 +187,7 @@ public class Game extends Object{
 	public static void main(String[] args){
 		int i;
 		Game mon = new Game();
-		while(mon.pawn.numberOfTurns<10000){
+		while(mon.pawn.numberOfTurns < NUMBER_OF_TURNS){
 			mon.takeTurn(mon.pawn);
 		}
 		System.out.println(mon.pawn.toString());
